@@ -2,6 +2,10 @@
 # Command to comment out a line in a file
 # sed -e '/COMMENTMEOUT/ s/^#*/#/' -i FILENAME
 
+################################################################
+# The following instructions come from this page:
+# https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/install-software
+
 apt-get -y install vim
 apt-get -y install hostapd isc-dhcp-server
 
@@ -23,3 +27,11 @@ echo '	max-lease-time 7200;' >> /etc/dhcp/dhcpd.conf
 echo '	option domain-name "local";' >> /etc/dhcp/dhcpd.conf
 echo '	option domain-name-servers 8.8.8.8, 8.8.4.4;' >> /etc/dhcp/dhcpd.conf
 echo '}' >> /etc/dhcp/dhcpd.conf
+
+# Now change a different file
+cp /etc/default/isc-dhcp-server /etc/default/isc-dhcp-server.orig
+sed -i 's/INTERFACES=""/INTERFACES="wlan0"/g' /etc/default/isc-dhcp-server
+
+# Note: See if you can simplify the above by revisiting the following page which didn't work for you the first time you tried it
+# http://www.novitiate.co.uk/?p=183
+
