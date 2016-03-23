@@ -7,6 +7,6 @@
 # https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/install-software
 
 apt-get -y install vim
-apt-get -y install hostapd isc-dhcp-server
+apt-get -y install hostapd udhcpd
 
 # Set up DHCP server
