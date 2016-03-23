@@ -1,1 +1,2 @@
-~/configurehotspot_2.sh
+./configure_hotspot.sh
+./configure_nginx.sh
