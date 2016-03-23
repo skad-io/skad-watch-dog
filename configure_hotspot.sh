@@ -49,9 +49,9 @@ echo 'wpa_key_mgmt=WPA-PSK' >> /etc/hostapd/hostapd.conf
 echo 'wpa_pairwise=TKIP' >> /etc/hostapd/hostapd.conf
 echo 'rsn_pairwise=CCMP' >> /etc/hostapd/hostapd.conf
 
-mv /etc/hostapd/hostapd.conf /etc/hostapd/hostapd.conf.orig
+mv /etc/default/hostapd /etc/default/hostapd.orig
 
-echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' >> /etc/hostapd/hostapd.conf
+echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' >> /etc/default/hostapd
 
 # Prevent udhcpd and hostapd from running on boot 
 update-rc.d hostapd remove
