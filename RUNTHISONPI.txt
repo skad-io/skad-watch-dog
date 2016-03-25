@@ -1,5 +1,6 @@
 wget https://github.com/scottclee/SKAD/archive/wifi-hotspot-scripts.zip
 unzip wifi-hotspot-scripts.zip
+rm wifi-hotspot-scripts.zip
 cd SKAD-wifi-hotspot-scripts
 chmod +x *.sh
-sudo ./go.sh
+echo "Now run ./go.sh"
