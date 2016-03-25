@@ -1,0 +1,9 @@
+- Comment out a line in a file:
+sed -e '/COMMENTMEOUT/ s/^#*/#/' -i FILENAME
+
+- Replace a string in a file:
+sed -e 's/x/y/g' -i FILENAME
+
+
+
+
