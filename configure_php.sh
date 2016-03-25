@@ -10,11 +10,11 @@ cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig
 
 echo 'These commands dont seem to be working'
 
-sed -i 's/#location ~ \.php$ {/location ~ \.php$ {/g' /etc/nginx/sites-available/default
-sed -i 's/#       include snippets\/fastcgi-php.conf;/       include snippets\/fastcgi-php.conf;/g' /etc/nginx/sites-available/default
-sed -i 's/#       fastcgi_pass unix:\/var\/run\/php5-fpm.sock;/       fastcgi_pass unix:\/var\/run\/php5-fpm.sock;/g' /etc/nginx/sites-available/default
-sed -i 's/#location ~ \/\\.ht {/location ~ \/\\.ht {/g' /etc/nginx/sites-available/default
-sed -i 's/#       deny all;/       deny all;/g' /etc/nginx/sites-available/default
+sed -e 's/#location ~ \.php$ {/location ~ \.php$ {/g' -i /etc/nginx/sites-available/default
+sed -e 's/#       include snippets\/fastcgi-php.conf;/       include snippets\/fastcgi-php.conf;/g' -i /etc/nginx/sites-available/default
+sed -e 's/#       fastcgi_pass unix:\/var\/run\/php5-fpm.sock;/       fastcgi_pass unix:\/var\/run\/php5-fpm.sock;/g' -i /etc/nginx/sites-available/default
+sed -e 's/#location ~ \/\\.ht {/location ~ \/\\.ht {/g' -i /etc/nginx/sites-available/default
+sed -e 's/#       deny all;/       deny all;/g' -i /etc/nginx/sites-available/default
 
 systemctl reload nginx.service
 
