@@ -2,7 +2,7 @@
 sed -e '/COMMENTMEOUT/ s/^#*/#/' -i FILENAME
 
 - Replace a string in a file:
-sed -e 's/x/y/g' -i FILENAME
+sed -e 's|x|y|g' -i FILENAME
 
 
 
