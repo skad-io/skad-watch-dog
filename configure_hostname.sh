@@ -12,4 +12,5 @@ cp /etc/hostname /etc/hostname.orig
 echo $1$extension > /etc/hostname
 
 cp /etc/hosts /etc/hosts.orig
-sed -e 's/raspberrypi/$1$extension/g' -i /etc/hosts
+sed -e 's/raspberrypi/'$1''$extension'/g' -i /etc/hosts
+
