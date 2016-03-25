@@ -1,7 +1,7 @@
 ###################################################################
 # Change the DNS hostname (which can be used to contact it over wifi)
 
-source parameters_dev.sh
+. ./parameters_dev.sh
 
 if [ -z "$1" ]; then
    echo "Parameters: <hostname>"
