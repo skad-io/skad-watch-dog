@@ -1,1 +1,1 @@
-wget -O https://raw.githubusercontent.com/scottclee/SKAD/wifi-hotspot-scripts/download_all.sh | bash
+wget -O - https://raw.githubusercontent.com/scottclee/SKAD/wifi-hotspot-scripts/download_all.sh | bash
