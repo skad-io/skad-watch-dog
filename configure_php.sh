@@ -1,8 +1,4 @@
-# TODO: Place all these into a useful commands file
-# Replace a string in a file:
-# sed -i 's/x/y/g' /etc/nginx/sites-available/default
-
-# Tutorial:
+# Kudos to this tutorial:
 # https://www.howtoforge.com/tutorial/installing-nginx-with-php-fpm-and-mariadb-lemp-on-debian-jessie/
 
 apt-get install php5-fpm
