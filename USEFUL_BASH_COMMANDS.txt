@@ -12,3 +12,6 @@ http://stackoverflow.com/questions/218839/assigning-tcp-ip-ports-for-in-house-ap
 
 Setting up letsencrypt:
 https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04
+
+Regex examples:
+https://www.cs.tut.fi/~jkorpela/perl/regexp.html
