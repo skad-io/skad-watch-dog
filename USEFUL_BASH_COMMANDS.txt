@@ -15,3 +15,6 @@ https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-
 
 Regex examples:
 https://www.cs.tut.fi/~jkorpela/perl/regexp.html
+
+Useful regex example that shows how to extract substrings:
+http://stackoverflow.com/questions/1444009/how-can-i-extract-substrings-from-a-string-in-perl
