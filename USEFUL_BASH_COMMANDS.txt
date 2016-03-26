@@ -4,6 +4,11 @@ sed -e '/COMMENTMEOUT/ s/^#*/#/' -i FILENAME
 - Replace a string in a file:
 sed -e 's|x|y|g' -i FILENAME
 
+Useful links:
 
+Assigning TCP/IP Ports for In-House Application Use
+- Pick a port number from 49152 through 65535.
+http://stackoverflow.com/questions/218839/assigning-tcp-ip-ports-for-in-house-application-use
 
-
+Setting up letsencrypt:
+https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04
