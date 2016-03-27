@@ -24,3 +24,6 @@ https://www.linux.com/learn/tutorials/796387-beginning-git-and-github-for-linux-
 
 JSON functions in Perl:
 http://search.cpan.org/~makamaka/JSON-2.90/lib/JSON.pm
+
+Static site template came from here:
+http://startbootstrap.com/template-overviews/freelancer/
