@@ -1,0 +1,27 @@
+#!/bin/sh -e
+#
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# Print the IP address
+sleep 5
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
+fi
+
+if [ "$_IP" ]; then
+		echo "[Access Point Setup] - The wifi is already connected, no access point needed"
+	else
+		echo "[Access Point Setup] - The wifi is not connected, firing up an access point..."
+		sudo ifconfig wlan0 192.168.0.1
+		sudo service hostapd start
+		sudo service udhcpd start
+fi
