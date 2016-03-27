@@ -4,9 +4,10 @@ if [ -z "$1" ]; then
 fi
 
 branch=$1
+rm -fr SKAD-${branch}
+rm SKAD
 wget https://github.com/scottclee/SKAD/archive/${branch}.zip
 unzip ${branch}.zip
 rm ${branch}.zip
-rm SKAD
 ln -s SKAD-${branch} SKAD
 chmod +x SKAD/scripts/*.sh
