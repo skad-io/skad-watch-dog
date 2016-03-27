@@ -16,7 +16,6 @@ sub serversToJson {
             port => $server->getPort(),
             domains => $server->getDomains(),
             targetAddress => $server->getTargetAddress(),
-            z => "ya"
         );
            
         push @serversArray, \%serverHash;
