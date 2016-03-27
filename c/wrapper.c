@@ -21,6 +21,8 @@ main (int argc, char *argv[])
          strcpy(tmpString, command);
          strcat(tmpString, " ");
          strcat(tmpString, argv[1]);
+         strcat(tmpString, " ");
+         strcat(tmpString, argv[2]);
          command = tmpString;
    }
 
