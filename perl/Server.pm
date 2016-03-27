@@ -52,4 +52,5 @@ sub toString {
     my( $self ) = @_;
     return $self->getPort().",".$self->getDomains().",".$self->getTargetAddress();
 }
+
 1;

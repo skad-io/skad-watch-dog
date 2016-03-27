@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 
 use Server;
+use ServerFunctions;
 use NginxConfigFunctions;
  
 my @servers = readNginxConfig("/etc/nginx/sites-available/default");
 
-foreach my $server (@servers) {
-	print $server->toString()."\n";
-}
+print ServerFunctions->serversToJson(@servers);
+
