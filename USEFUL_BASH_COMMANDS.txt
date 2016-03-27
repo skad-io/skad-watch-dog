@@ -21,3 +21,7 @@ http://stackoverflow.com/questions/1444009/how-can-i-extract-substrings-from-a-s
 
 Github Tutorial:
 https://www.linux.com/learn/tutorials/796387-beginning-git-and-github-for-linux-users/
+
+Test parameter for guard dog:
+http://guarddog-dev/exec.php?a=1&b=2&c=3&d=5
+
