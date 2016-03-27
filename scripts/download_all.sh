@@ -1,4 +1,12 @@
-wget https://github.com/scottclee/SKAD/archive/wifi-hotspot-scripts.zip
-unzip wifi-hotspot-scripts.zip
-rm wifi-hotspot-scripts.zip
-chmod +x SKAD-wifi-hotspot-scripts/*.sh
+if [ -z "$1" ] || [ -z "$2" ]; then
+   echo "Parameters: <branch name>"
+   exit 1
+fi
+
+branch=$1
+wget https://github.com/scottclee/SKAD/archive/${branch}.zip
+unzip ${branch}.zip
+rm ${branch}.zip
+rm SKAD
+ln -s SKAD-${branch} SKAD
+chmod +x SKAD/scripts/*.sh
