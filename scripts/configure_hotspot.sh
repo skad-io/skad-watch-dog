@@ -17,7 +17,7 @@
 apt-get -y install vim
 apt-get -y install hostapd udhcpd
 
-# COnfigure udhcpd (hands out IP addresses)
+# Configure udhcpd (hands out IP addresses)
 mv /etc/udhcpd.conf /etc/udhcpd.conf.orig
 cp /home/pi/SKAD/files/headlesswifisetup/udhcpd.conf /etc/
 
