@@ -25,7 +25,6 @@ cp /etc/default/udhcpd /etc/default/udhcpd.orig
 sed -e '/DHCPD_ENABLED="no"/ s/^#*/#/' -i /etc/default/udhcpd
 
 # Configure hostapd (the wireless access point)
-mv /etc/hostapd/hostapd.conf /etc/hostapd/hostapd.conf.orig
 cp /home/pi/SKAD/files/headlesswifisetup/hostapd.conf /etc/hostapd/
 
 mv /etc/default/hostapd /etc/default/hostapd.orig
