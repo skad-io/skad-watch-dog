@@ -21,3 +21,6 @@ http://stackoverflow.com/questions/1444009/how-can-i-extract-substrings-from-a-s
 
 Github Tutorial:
 https://www.linux.com/learn/tutorials/796387-beginning-git-and-github-for-linux-users/
+
+JSON functions in Perl:
+http://search.cpan.org/~makamaka/JSON-2.90/lib/JSON.pm
