@@ -537,18 +537,19 @@
     <script src="js/freelancer.js"></script>
 
 	<script>
-	#$(document).ready(function(){	
-		$.getJSON("php/exec.php?script=getNginxServerConfigs",
+	$(document).ready(function(){	
+		$.getJSON("php/exec.php?script=getWifiList",
 		function(data) {
 			
-			if (data["servers"].length == 0)
+			if (data["wifiList"].length == 0)
 			{
-				$("#serverConfigs").append("<button id='setupGuardDog' class='btn btn-primary'>Click here to set up Guard Dog</button>");
+				$("#serverConfigs").append("No wifi networks are visible");
 
 			}
 			else
 			{
 				$("#serverConfigs").append(JSON.stringify(data));
+				//TODO Append a form here with the list of wifi servers available
 			}	
 		}); 	
 	});
