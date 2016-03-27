@@ -80,6 +80,7 @@
                         <hr class="star-light">
                         <span class="skills">Serve - Protect - Uphold</span>
                     </div>
+		    <div id="serverConfigs"></div>
                 </div>
             </div>
         </div>
@@ -534,6 +535,25 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
+
+	<script>
+	$(document).ready(function(){	
+		$.getJSON("php/exec.php?script=getNginxServerConfigs",
+		function(data) {
+			
+			if (data["servers"].length == 0)
+			{
+				$("#serverConfigs").append("<button id='setupGuardDog' class='btn btn-primary'>Click here to set up Guard Dog</button>");
+
+			}
+			else
+			{
+				$("#serverConfigs").append(JSON.stringify(data));
+			}	
+		}); 	
+	});
+
+	</script>
 
 </body>
 

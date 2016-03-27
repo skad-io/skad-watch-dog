@@ -27,3 +27,18 @@ http://search.cpan.org/~makamaka/JSON-2.90/lib/JSON.pm
 
 Static site template came from here:
 http://startbootstrap.com/template-overviews/freelancer/
+
+Working Javascript AJAX call:
+
+<script>
+        $('#json').click(function(){
+                $.getJSON("php/exec.php?script=getNginxServerConfigs",
+                function(data) {
+                        alert(JSON.stringify(data));
+                });
+        });
+
+</script>
+
+The button to start it
+<button id="json" class="btn btn-primary">json</button>
