@@ -1,3 +1,3 @@
-sudo apt-get install cpanminus
+sudo apt-get -y install cpanminus
 cpanm JSON
 
