@@ -42,3 +42,7 @@ Working Javascript AJAX call:
 
 The button to start it
 <button id="json" class="btn btn-primary">json</button>
+=======
+Test parameter for guard dog:
+http://guarddog-dev/exec.php?a=1&b=2&c=3&d=5
+
