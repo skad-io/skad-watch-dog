@@ -22,6 +22,27 @@ http://stackoverflow.com/questions/1444009/how-can-i-extract-substrings-from-a-s
 Github Tutorial:
 https://www.linux.com/learn/tutorials/796387-beginning-git-and-github-for-linux-users/
 
+JSON functions in Perl:
+http://search.cpan.org/~makamaka/JSON-2.90/lib/JSON.pm
+
+Static site template came from here:
+http://startbootstrap.com/template-overviews/freelancer/
+
+Working Javascript AJAX call:
+
+<script>
+        $('#json').click(function(){
+                $.getJSON("php/exec.php?script=getNginxServerConfigs",
+                function(data) {
+                        alert(JSON.stringify(data));
+                });
+        });
+
+</script>
+
+The button to start it
+<button id="json" class="btn btn-primary">json</button>
+=======
 Test parameter for guard dog:
 http://guarddog-dev/exec.php?a=1&b=2&c=3&d=5
 
