@@ -80,7 +80,7 @@
                         <hr class="star-light">
                         <span class="skills">Serve - Protect - Uphold</span>
                     </div>
-		    <div id="serverConfigs">Wifi setup</div>
+		    <div id="wifis">Searching for wifi networks</div>
                 </div>
             </div>
         </div>
@@ -543,13 +543,61 @@
 			
 			if (data["wifiList"].length == 0)
 			{
-				$("#serverConfigs").append("No wifi networks are visible");
+				$("#wifis").append("No wifi networks are visible");
 
 			}
 			else
 			{
-				$("#serverConfigs").append(JSON.stringify(data));
-				//TODO Append a form here with the list of wifi servers available
+var formHTML = `
+<form>
+  <fieldset class='form-group'>
+    <label for='exampleSelect1'>Wifi networks</label>
+    <select class='form-control' id='wifiSelect'>
+    </select>
+  </fieldset>
+  <fieldset class='form-group'>
+    <label for='exampleInputPassword1'>Password</label>
+    <input type='password' class='form-control' id='wifiPassword' placeholder='Password'>
+  </fieldset>
+  <button id="wifiSubmit" type='button' class='btn btn-primary'>Submit</button>
+</form>
+`;
+				$("#wifis").empty();
+				$("#wifis").append(formHTML);
+			
+				$('#wifiSubmit').prop('disabled', true);
+
+				$('#wifiPassword').keyup(function() {
+					if($(this).val() != '') {
+						$('#wifiSubmit').prop('disabled', false);
+					}
+				});
+	
+				wifis = data["wifiList"];
+				
+				for (i=0; i < wifis.length; i++) {
+					$("#wifiSelect").append("<option>" + wifis[i] + "</option>");	
+				}
+
+				//$("#wifis").append(JSON.stringify(data));
+
+				$("#wifiSubmit").click(function(e) {
+					//e.preventDefault(); // prevent browser from loading the url
+					essid = $("#wifiSelect").val();
+					password = $("#wifiPassword").val();
+
+					$.getJSON("php/exec.php?script=setWifiDetails&essid="+essid+"&password="+password, function(data) {
+						//alert(JSON.stringify(data));
+						$("#wifis").empty();
+						$("#wifis").append(data["msg"]);
+					
+						// Now reboot the pi
+						$.getJSON("php/exec.php?script=reboot", 
+						function(data) {
+							//alert(JSON.stringify(data));
+						});
+					});
+				});
 			}	
 		}); 	
 	});

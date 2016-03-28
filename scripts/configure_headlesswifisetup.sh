@@ -41,4 +41,5 @@ cp /home/pi/SKAD/files/headlesswifisetup/rc.local /etc/
 chmod +x /etc/rc.local
 
 ln -s /home/pi/SKAD/html/headlesswifisetup /var/www/html.headlessMode
-ln -s /home/pi/SKAD/php /var/www/html.headlessMode/php
+# I believe the symbolic link is now stored in git
+#ln -s /home/pi/SKAD/php /var/www/html.headlessMode/php

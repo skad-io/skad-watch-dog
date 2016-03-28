@@ -18,25 +18,15 @@ if [ "$_IP" ]; then
 fi
 
 if [ "$_IP" ]; then
-	echo "[Access Point Setup] - The wifi is already connected, no access point needed"
+	echo "[Access Point Setup] - The network already connected, no access point needed"
 	# if previously in headless mode then change things back to what they were before
 	#TODO I think headless mode might need its own version of nginx config file
-	if [ -e "/var/www/html.hideForHeadlessMode" ]; then
-		mv /var/www/html /var/www/html.headlessMode
-		mv /var/www/html.hideForHeadlessMode /var/www/html
-		# Don't think you actually need to restart the service so commenting out for now
-		# service nginx restart
-	fi
+	/home/pi/SKAD/scripts/switchfrom_headlessmode.sh
 else
-	echo "[Access Point Setup] - The wifi is not connected, firing up an access point..."
+	echo "[Access Point Setup] - The network is not connected, firing up an access point..."
 	ifconfig wlan0 192.168.0.1
 	service hostapd start
 	service udhcpd start
 		
-	if [ ! -e "/var/www/html.hideForHeadlessMode" ]; then
-		# Set up webserver for headless mode
-		mv /var/www/html /var/www/html.hideForHeadlessMode
-		mv /var/www/html.headlessMode /var/www/html
-		# service nginx restart
-	fi
+	/home/pi/SKAD/scripts/switchto_headlessmode.sh
 fi
