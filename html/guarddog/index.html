@@ -96,7 +96,93 @@
 			
 			if (data["servers"].length == 0)
 			{
-				$("#serverConfigs").append("<button id='setupGuardDog' class='btn btn-primary'>Click here to set up Guard Dog</button>");
+var formHTML = `
+Your Guard Dog is not yet secure. Please enter the domain name you would like to secure it against: e.g mydomain.example.com<BR>
+
+<form>
+  <fieldset class='form-group'>
+    <label for='exampleInputPassword1'>Domain(s)</label>
+    <input type='text' class='form-control' id='domains' placeholder='mydomain.example.com (space separate multiple values)'>
+  </fieldset>
+  <button id="domainSubmit" type='button' class='btn btn-primary'>Submit</button>
+</form>
+`;
+				$("#serverConfigs").append(formHTML);
+
+					$("#domainSubmit").click(function(e) {
+					domains = $("#domains").val();
+					$.getJSON("php/exec.php?script=checkDomains&domains="+domains, function(data) {
+						//alert(JSON.stringify(data));
+
+						externalIP = data["externalIP"];
+						domainsArray = data["domains"];
+
+						$("#serverConfigs").empty();
+
+						if (domainsArray.length > 0) {
+							//$("#serverConfigs").append(JSON.stringify(data));
+							mismatches = "";
+
+							for (i=0; i < domainsArray.length; i++) {
+								if (domainsArray[i].address != externalIP) {
+									mismatches += domainsArray[i].domain + " = " + domainsArray[i].address + "<BR>";
+								}
+							}
+
+							if (mismatches != "") {
+								// There was a mismatch
+								$("#serverConfigs").append("Please set the following domains to your external IP address (" + externalIP + ") in order to continue:<BR>");
+								$("#serverConfigs").append(mismatches);
+							}
+							else {
+								// All good so let's continue
+								$("#serverConfigs").append("Attempting to perform handshake with Guard Dog via " + domainsArray[0].domain);	
+
+								// Try port routing handshakes for the first domain (we've confirmed they all point to the same address above)
+								$.getJSON("php/exec.php?script=testPortRouting&domain="+domainsArray[0].domain+"&port=80", function(data) {
+									
+									$("#serverConfigs").empty();
+
+									if (data["success"] == "true") {
+										$("#serverConfigs").append("Handshake on " + domainsArray[0].domain + " port 80 confirmed. Now trying port 443");
+
+										$.getJSON("php/exec.php?script=testPortRouting&domain="+domainsArray[0].domain+"&port=443", function(data) {
+									
+											$("#serverConfigs").empty();
+
+											if (data["success"] == "true") {
+												$("#serverConfigs").append("All handshakes are confirmed. Now go ahead and create the SSL certificates");
+											}
+											else {
+												if (data["HTTPCode"] == "404") {
+													$("#serverConfigs").append("Here's the important bit... please put Guard Dog in your router's DMZ or route port 443 to it and press the retry button. Go to www.skad.io for instructions");
+												}
+												else {
+													$("#serverConfigs").append(JSON.stringify(data));
+												}
+											}
+										});
+									}
+									else {
+										if (data["HTTPCode"] == "404") {
+											$("#serverConfigs").append("Here's the important bit... please put Guard Dog in your router's DMZ or route port 80 to it and press the retry button. Go to www.skad.io for instructions");
+										}
+										else {
+											$("#serverConfigs").append(JSON.stringify(data));
+										}
+									}
+								});
+
+
+
+							}
+						}
+						else {
+							// Possibly something might have gone wrong
+							$("#serverConfigs").append("Something went wrong. Try again");
+						}
+					});
+				});
 
 			}
 			else
