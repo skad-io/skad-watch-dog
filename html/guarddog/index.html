@@ -96,7 +96,35 @@
 			
 			if (data["servers"].length == 0)
 			{
-				$("#serverConfigs").append("<button id='setupGuardDog' class='btn btn-primary'>Click here to set up Guard Dog</button>");
+var formHTML = `
+Your Guard Dog is not yet secure. Please enter the domain name you would like to secure it against: e.g mydomain.example.com<BR>
+
+<form>
+  <fieldset class='form-group'>
+    <label for='exampleInputPassword1'>Domain(s)</label>
+    <input type='text' class='form-control' id='domains' placeholder='mydomain.example.com (space separate multiple values)'>
+  </fieldset>
+  <button id="domainSubmit" type='button' class='btn btn-primary'>Submit</button>
+</form>
+`;
+				$("#serverConfigs").append(formHTML);
+
+					$("#domainSubmit").click(function(e) {
+					domains = $("#domains").val();
+					$.getJSON("php/exec.php?script=checkDomains&domains="+domains, function(data) {
+						alert(JSON.stringify(data));
+
+						//alert(JSON.stringify(data));
+						//$("#wifis").empty();
+						//$("#wifis").append(data["msg"]);
+					
+						// Now reboot the pi
+						//$.getJSON("php/exec.php?script=reboot", 
+						//function(data) {
+						//	//alert(JSON.stringify(data));
+						//});
+					});
+				});
 
 			}
 			else
