@@ -1,4 +1,4 @@
-./configure_vim.sh
+./configure_basics.sh
 ./configure_nginx.sh
 ./configure_php.sh
 ./configure_cpanJson.sh
