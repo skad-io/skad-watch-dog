@@ -8,16 +8,17 @@ my $decodedParms = $ARGV[0] =~ s/%20/ /r; # This should really use a proper deco
 my $parmsRef = HTTPFunctions->getQuerystringDictionary($decodedParms);
 my %parms = %$parmsRef;
 my @domains = split / /, $parms{domains};
-my %domainsHash;
+my @domainsArray;
 
 foreach $domain (@domains) {
 	my $domainAddress = `/usr/bin/host $domain`;
 
 	$domainAddress =~ m/.+has address (.+)/ and do {
-		$domainsHash{$domain} = $1;
+		my %domainHash = ( $domain => $1 );
+		push @domainsArray, \%domainHash; 
 	}
 }
 
-my %wifiListHash = ( externalIP => $externalIP, domains => \%domainsHash );
+my %wifiListHash = ( externalIP => $externalIP, domains => \@domainsArray );
 print encode_json(\%wifiListHash)."\n";
 

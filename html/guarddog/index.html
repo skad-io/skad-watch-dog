@@ -114,6 +114,21 @@ Your Guard Dog is not yet secure. Please enter the domain name you would like to
 					$.getJSON("php/exec.php?script=checkDomains&domains="+domains, function(data) {
 						alert(JSON.stringify(data));
 
+						alert("domains.length="+data["domains"].length);
+
+						$("#serverConfigs").empty();
+
+						if (data["domains"].length > 0) {
+							$("#serverConfigs").append(JSON.stringify(data));
+						}
+						else {
+							// Possibly something might have gone wrong
+							$("#serverConfigs").append("Something went wrong. Try again");
+						}
+						
+
+						//alert(JSON.stringify(data));
+
 						//alert(JSON.stringify(data));
 						//$("#wifis").empty();
 						//$("#wifis").append(data["msg"]);
