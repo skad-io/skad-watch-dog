@@ -151,7 +151,7 @@ Your Guard Dog is not yet secure. Please enter the domain name you would like to
 											$("#serverConfigs").empty();
 
 											if (data["success"] == "true") {
-												$("#serverConfigs").append("All handshakes are confirmed. Now go ahead and create the SSL certificates");
+												$("#serverConfigs").append("All handshakes are confirmed. Now go ahead and create the SSL certificates by calling the Perl script createSSL.pl. Note: This will shut down nginx and so you will need to poll the server after a few seconds to ensure it is back up and running. Note2: It should be running under SSL so you might need to reload the whole page");
 											}
 											else {
 												if (data["HTTPCode"] == "404") {
