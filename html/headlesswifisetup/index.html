@@ -586,17 +586,15 @@ var formHTML = `
 					essid = $("#wifiSelect").val();
 					password = $("#wifiPassword").val();
 
-					$.getJSON("php/exec.php?script=setWifiDetails&essid="+essid+"&password="+password,
-				                function(data) {
-							//alert(JSON.stringify(data));
-							$("#wifis").empty();
-							$("#wifis").append(data["msg"]);
+					$.getJSON("php/exec.php?script=setWifiDetails&essid="+essid+"&password="+password, function(data) {
+						//alert(JSON.stringify(data));
+						$("#wifis").empty();
+						$("#wifis").append(data["msg"]);
 					
-							// Now reboot the pi
-							$.getJSON("php/exec.php?script=reboot", 
-							function(data) {
-								//alert(JSON.stringify(data));
-							});
+						// Now reboot the pi
+						$.getJSON("php/exec.php?script=reboot", 
+						function(data) {
+							//alert(JSON.stringify(data));
 						});
 					});
 				});
