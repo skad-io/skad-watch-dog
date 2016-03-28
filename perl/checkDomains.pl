@@ -14,7 +14,9 @@ foreach $domain (@domains) {
 	my $domainAddress = `/usr/bin/host $domain`;
 
 	$domainAddress =~ m/.+has address (.+)/ and do {
-		my %domainHash = ( $domain => $1 );
+		my %domainHash;
+		$domainHash{domain} = $domain;
+		$domainHash{address} = $1;
 		push @domainsArray, \%domainHash; 
 	}
 }

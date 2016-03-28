@@ -114,12 +114,30 @@ Your Guard Dog is not yet secure. Please enter the domain name you would like to
 					$.getJSON("php/exec.php?script=checkDomains&domains="+domains, function(data) {
 						alert(JSON.stringify(data));
 
-						alert("domains.length="+data["domains"].length);
+						externalIP = data["externalIP"];
+						domainsArray = data["domains"];
 
 						$("#serverConfigs").empty();
 
-						if (data["domains"].length > 0) {
-							$("#serverConfigs").append(JSON.stringify(data));
+						if (domainsArray.length > 0) {
+							//$("#serverConfigs").append(JSON.stringify(data));
+							mismatches = "";
+
+							for (i=0; i < domainsArray.length; i++) {
+								if (domainsArray[i].address != externalIP) {
+									mismatches += domainsArray[i].domain + " = " + domainsArray[i].address + "<BR>";
+								}
+							}
+
+							if (mismatches != "") {
+								// There was a mismatch
+								$("#serverConfigs").append("Please set the following domains to your external IP address (" + externalIP + ") in order to continue:<BR>");
+								$("#serverConfigs").append(mismatches);
+							}
+							else {
+								// All good so let's continue
+								$("#serverConfigs").append("All good. Let's continue");	
+							}
 						}
 						else {
 							// Possibly something might have gone wrong
