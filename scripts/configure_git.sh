@@ -1,4 +1,4 @@
-sudo apt-get install vim
+sudo apt-get -y install git
 mkdir /home/pi/git
 git config --global user.email "scott.john.clee@gmail.com"
 git config --global user.name "scottclee"
