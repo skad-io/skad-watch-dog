@@ -4,7 +4,8 @@ package HTTPFunctions;
 
 sub getQuerystringDictionary {
     my ( $self, $querystring ) = @_;
-    my @pairs = split(/&/,$querystring);
+    my $decodedParms = $querystring =~ s/%20/ /r; # This should really use a proper decode function
+    my @pairs = split(/&/,$decodedParms);
     my %parms;
     my $item;
     my $value;

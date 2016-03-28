@@ -6,4 +6,6 @@
 ./configure_headlesswifisetup.sh
 ./configure_expandRootFs.sh
 ./configure_hostname.sh guarddog
+mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig
+cp /home/pi/SKAD/files/guarddog/default /etc/nginx/sites-available/
 echo "Please reboot me now"

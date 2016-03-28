@@ -4,8 +4,7 @@ use JSON;
 use HTTPFunctions;
 
 my $externalIP = `/usr/bin/wget -qO- http://ipecho.net/plain`;
-my $decodedParms = $ARGV[0] =~ s/%20/ /r; # This should really use a proper decode function
-my $parmsRef = HTTPFunctions->getQuerystringDictionary($decodedParms);
+my $parmsRef = HTTPFunctions->getQuerystringDictionary($ARGV[0]);
 my %parms = %$parmsRef;
 my @domains = split / /, $parms{domains};
 my @domainsArray;
