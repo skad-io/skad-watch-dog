@@ -24,8 +24,8 @@ if [ "$_IP" ]; then
 	if [ -e "/var/www/html.hideForHeadlessMode" ]; then
 		mv /var/www/html /var/www/html.headlessMode
 		mv /var/www/html.hideForHeadlessMode /var/www/html
-		# Don't think you actually need to restart the service so commenting out for now
-		# service nginx restart
+		# I think it's losing symbolic links during the move so recreate
+		ln -s /home/pi/SKAD/php /var/www/html/php
 	fi
 else
 	echo "[Access Point Setup] - The wifi is not connected, firing up an access point..."
@@ -37,6 +37,7 @@ else
 		# Set up webserver for headless mode
 		mv /var/www/html /var/www/html.hideForHeadlessMode
 		mv /var/www/html.headlessMode /var/www/html
-		# service nginx restart
+		# I think it's losing symbolic links during the move so recreate
+		ln -s /home/pi/SKAD/php /var/www/html/php
 	fi
 fi
