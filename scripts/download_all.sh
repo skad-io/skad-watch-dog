@@ -4,6 +4,7 @@ if [ -z "$1" ]; then
 fi
 
 branch=$1
+cd /home/pi
 rm -fr SKAD-${branch}
 rm SKAD
 wget https://github.com/scottclee/SKAD/archive/${branch}.zip
