@@ -1,4 +1,4 @@
-./configure_basics.sh
+./configure_core.sh
 ./configure_nginx.sh
 ./configure_php.sh
 ./configure_cpanJson.sh
