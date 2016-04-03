@@ -4,6 +4,7 @@
 ./configure_cpanJson.sh
 ./configure_webservices.sh
 ./configure_headlesswifisetup.sh
+./configure_letsencrypt.sh
 ./configure_expandRootFs.sh
 ./configure_hostname.sh guarddog
 mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig

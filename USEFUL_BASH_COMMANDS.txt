@@ -10,8 +10,14 @@ Assigning TCP/IP Ports for In-House Application Use
 - Pick a port number from 49152 through 65535.
 http://stackoverflow.com/questions/218839/assigning-tcp-ip-ports-for-in-house-application-use
 
-Setting up letsencrypt:
+Setting up letsencrypt: (see the next one instead)
 https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-14-04
+
+The really useful instructions for setting up letsencrypt:
+https://letsencrypt.org/getting-started/
+
+# Multiple domain example:
+# letsencrypt-auto certonly --standalone -d scottshouse.redirectme.net -d www.example.com
 
 Regex examples:
 https://www.cs.tut.fi/~jkorpela/perl/regexp.html
