@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Guard Dog by SKAD</title>
+    <title>Defender Dog by SKAD</title>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <a class="navbar-brand" href="#page-top">Guard Dog by SKAD</a>
+                <a class="navbar-brand" href="#page-top">Defender Dog by SKAD</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -61,7 +61,7 @@
                 <div class="col-lg-12">
                     <img class="img-responsive" src="img/biz-brand_guard-dog.png" alt="">
                     <div class="intro-text">
-                        <span class="name">Guard Dog</span>
+                        <span class="name">Defender Dog</span>
                         <hr class="star-light">
                         <span class="skills">Serve - Protect - Uphold</span>
                     </div>
@@ -97,7 +97,7 @@
 			if (data["servers"].length == 0)
 			{
 var formHTML = `
-Your Guard Dog is not yet secure. Please enter the domain name you would like to secure it against: e.g mydomain.example.com<BR>
+Your Defender Dog is not yet secure. Please enter the domain name you would like to secure it against: e.g mydomain.example.com<BR>
 
 <form>
   <fieldset class='form-group'>
@@ -136,7 +136,7 @@ Your Guard Dog is not yet secure. Please enter the domain name you would like to
 							}
 							else {
 								// All good so let's continue
-								$("#serverConfigs").append("Attempting to perform handshake with Guard Dog via " + domainsArray[0].domain);	
+								$("#serverConfigs").append("Attempting to perform handshake with Defender Dog via " + domainsArray[0].domain);	
 
 								// Try port routing handshakes for the first domain (we've confirmed they all point to the same address above)
 								$.getJSON("php/exec.php?script=testPortRouting&domain="+domainsArray[0].domain+"&port=80", function(data) {
@@ -151,11 +151,16 @@ Your Guard Dog is not yet secure. Please enter the domain name you would like to
 											$("#serverConfigs").empty();
 
 											if (data["success"] == "true") {
-												$("#serverConfigs").append("All handshakes are confirmed. Now go ahead and create the SSL certificates by calling the Perl script createSSL.pl. Note: This will shut down nginx and so you will need to poll the server after a few seconds to ensure it is back up and running. Note2: It should be running under SSL so you might need to reload the whole page");
+												$.getJSON("php/exec.php?script=createSSL&domains="+domains, function(data) {
+													// This call will not return as nginx will be shut down during the script call
+												});
+
+												$("#serverConfigs").append("SSL certificates being created. Make an automatic call to refresh the broswer in a few seconds. It should then redirect through to HTTPS");
+												//$("#serverConfigs").append("All handshakes are confirmed. Now go ahead and create the SSL certificates by calling the Perl script createSSL.pl. Note: This will shut down nginx and so you will need to poll the server after a few seconds to ensure it is back up and running. Note2: It should be running under SSL so you might need to reload the whole page");
 											}
 											else {
 												if (data["HTTPCode"] == "404") {
-													$("#serverConfigs").append("Here's the important bit... please put Guard Dog in your router's DMZ or route port 443 to it and press the retry button. Go to www.skad.io for instructions");
+													$("#serverConfigs").append("Here's the important bit... please put Defender Dog in your router's DMZ or route port 443 to it and press the retry button. Go to www.skad.io for instructions");
 												}
 												else {
 													$("#serverConfigs").append(JSON.stringify(data));
@@ -165,7 +170,7 @@ Your Guard Dog is not yet secure. Please enter the domain name you would like to
 									}
 									else {
 										if (data["HTTPCode"] == "404") {
-											$("#serverConfigs").append("Here's the important bit... please put Guard Dog in your router's DMZ or route port 80 to it and press the retry button. Go to www.skad.io for instructions");
+											$("#serverConfigs").append("Here's the important bit... please put Defender Dog in your router's DMZ or route port 80 to it and press the retry button. Go to www.skad.io for instructions");
 										}
 										else {
 											$("#serverConfigs").append(JSON.stringify(data));
