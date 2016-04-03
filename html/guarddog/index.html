@@ -151,7 +151,12 @@ Your Defender Dog is not yet secure. Please enter the domain name you would like
 											$("#serverConfigs").empty();
 
 											if (data["success"] == "true") {
-												$("#serverConfigs").append("All handshakes are confirmed. Now go ahead and create the SSL certificates by calling the Perl script createSSL.pl. Note: This will shut down nginx and so you will need to poll the server after a few seconds to ensure it is back up and running. Note2: It should be running under SSL so you might need to reload the whole page");
+												$.getJSON("php/exec.php?script=createSSL&domains="+domains, function(data) {
+													// This call will not return as nginx will be shut down during the script call
+												});
+
+												$("#serverConfigs").append("SSL certificates being created. Make an automatic call to refresh the broswer in a few seconds. It should then redirect through to HTTPS");
+												//$("#serverConfigs").append("All handshakes are confirmed. Now go ahead and create the SSL certificates by calling the Perl script createSSL.pl. Note: This will shut down nginx and so you will need to poll the server after a few seconds to ensure it is back up and running. Note2: It should be running under SSL so you might need to reload the whole page");
 											}
 											else {
 												if (data["HTTPCode"] == "404") {
