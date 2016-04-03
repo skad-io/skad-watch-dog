@@ -5,9 +5,10 @@
 ./configure_cpanJson.sh
 ./configure_webservices.sh
 ./configure_headlesswifisetup.sh
-./configure_letsencrypt.sh
-./configure_expandRootFs.sh
-./configure_hostname.sh defenderdog
+<<<<<<< HEAD
+./configure_letsencrypt,sh
+./configure_hostname.sh guarddog
+>>>>>>> master
 mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig
 cp /home/pi/SKAD/files/guarddog/default /etc/nginx/sites-available/
 echo "Please reboot me now"
