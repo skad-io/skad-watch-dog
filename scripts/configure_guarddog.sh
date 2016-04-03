@@ -1,3 +1,4 @@
+./install_packages.sh
 ./configure_core.sh
 ./configure_nginx.sh
 ./configure_php.sh
