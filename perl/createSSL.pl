@@ -2,6 +2,7 @@
 
 use JSON;
 use HTTPFunctions;
+use NginxConfigFunctions;
 
 my $parmsRef = HTTPFunctions->getQuerystringDictionary($ARGV[0]);
 my %parms = %$parmsRef;
@@ -24,7 +25,8 @@ foreach $domain (@domains) {
 `/bin/mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.notNeededAsSetupIsComplete`;
 `/bin/mv /var/www/html /var/www/html.notNeededAsSetupIsComplete`;
 `/bin/cp /home/pi/SKAD/files/guarddog.secure/default /etc/nginx/sites-available/`;
-#TODO Need to replace the contents of the above nginx sites-available/default file with whatever domain/domains the SSL was generated for
+# TODO - at this stage the below writeNginxConfig call should use /var/www/html and not redirect - THIS CODE NEEDS TO BE ADDED AND THEN YOU CAN UNCOMMENT THE BELOW LINE
+#writeNginxConfig("/etc/nginx/sites-available/default", \@domains);
 `/bin/ln -s /home/pi/SKAD/html/guarddog.secure /var/www/html`;
 `/usr/sbin/service nginx start`;
 
