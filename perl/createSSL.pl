@@ -18,7 +18,6 @@ foreach $domain (@domains) {
 # Going to write the output to a file as we will be unable to return it to the browser due to stopping nginx
 
 `/bin/echo "domainsString = $domainsString" > /tmp/delme.txt`;
-`/usr/bin/whoami >> tmp/delme.txt`;
 `/opt/letsencrypt/letsencrypt-auto --dry-run certonly --standalone $domainsString >> /tmp/delme.txt`;
 
 `/bin/mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.notNeededAsSetupIsComplete`;
