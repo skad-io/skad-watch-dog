@@ -64,13 +64,13 @@ server {
 server {
     listen 80;
     server_name _;
-    return 301 http://$host$request_uri:9000;
+    return 301 http://$host:9000$request_uri;
 }
 
 server {
     listen 443;
     server_name _;
-    return 301 http://$host$request_uri:9000;
+    return 301 http://$host:9000$request_uri;
 }
 
 
