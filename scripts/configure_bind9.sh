@@ -1,7 +1,10 @@
 # Here's all the steps I followed to get it set up. Though I haven't managed to test it yet. Obviously all the below need to be automated
 
-http://blog.philippklaus.de/2014/08/deploy-your-own-bind9-based-ddns-server/
+# This is what I used below:
+# http://blog.philippklaus.de/2014/08/deploy-your-own-bind9-based-ddns-server/
 
+# Here's another one that I found but have not used:
+# http://andrwe.org/linux/own-ddns
 
 
 apt-get install bind9
