@@ -32,6 +32,9 @@ echo "This dog's details are as follows:"
 
 ./generate_unique_key.sh
 
+echo "configuring port scan detection"
+./configure_psad.sh
+
 echo "Name: $dogname"
 echo "##############################################################"
 

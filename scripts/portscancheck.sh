@@ -2,7 +2,7 @@
 DIRECTORY=/var/log/psad
 found=false;
 
-URL="https://skad.dog/scan.php"
+URL="https://skad.dog/portscan.php"
 
 DATE=;
 SOURCE=;
