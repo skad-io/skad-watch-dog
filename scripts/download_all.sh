@@ -23,7 +23,7 @@ sudo ./SKAD/scripts/expandRootFs.sh
 #cd /home/pi
 #rm -fr SKAD-${branch}
 #rm SKAD
-#wget https://github.com/scottclee/SKAD/archive/${branch}.zip
+#wget https://github.com/skad-io/skad-watch-dog/archive/${branch}.zip
 #unzip ${branch}.zip
 #rm ${branch}.zip
 #ln -s SKAD-${branch} SKAD
