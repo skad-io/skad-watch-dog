@@ -27,6 +27,12 @@ read dogname
 echo "Change password so it is no longer the default one:"
 /usr/bin/passwd pi
 
+echo "paste public key to authorise for access"
+read publickey
+
+echo $publickey > /home/pi/.ssh/authorized_keys
+
+
 echo "##############################################################"
 echo "This dog's details are as follows:"
 
