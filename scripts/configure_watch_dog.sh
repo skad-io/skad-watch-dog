@@ -36,16 +36,18 @@ echo $publickey >> /home/pi/.ssh/authorized_keys
 #./configure_hostname.sh $dogname
 ./configure_hostname.sh skad-dog
 
-echo "configuring port scan detection"
-./configure_psad.sh
-
 echo "##############################################################"
 echo "This dog's details are as follows:"
 
 ./generate_unique_key.sh
 
+read
+
 #echo "Name: $dogname"
 echo "##############################################################"
+
+echo "configuring port scan detection"
+./configure_psad.sh
 
 echo "Now reboot this machine"
 
