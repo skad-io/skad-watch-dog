@@ -11,18 +11,11 @@ sed -i "/success=1 default=ignore/c\auth\t[success=2 default=ignore]\tpam_unix.s
 line="00 00 * * * /home/pi/SKAD/scripts/remove_oldattemptsfromlog.sh"
 (crontab -u pi -l; echo "$line" ) | crontab -u pi -
 
-<<<<<<< HEAD:scripts/configure_skad_dog.sh
 ./create_dummyaccounts.sh
 
 # Add the DMZ check to run every minute
 `crontab -l | { cat; echo "* * * * * /home/pi/SKAD/scripts/check_DMZ_status.sh"; } | crontab -`
-=======
-# ./create_dummyaccounts.sh
 
-echo "Please enter the name of this new born Watch Dog:"
-read dogname
-
-./configure_hostname.sh $dogname
 
 echo "Change password so it is no longer the default one:"
 /usr/bin/passwd pi
@@ -32,7 +25,6 @@ read publickey
 
 echo $publickey > /home/pi/.ssh/authorized_keys
 
-
 echo "##############################################################"
 echo "This dog's details are as follows:"
 
@@ -41,8 +33,14 @@ echo "This dog's details are as follows:"
 echo "configuring port scan detection"
 ./configure_psad.sh
 
-echo "Name: $dogname"
+# For the beta we are just going with skad-dog which mirrors the name of the website
+#echo "Please enter the name of this new born Watch Dog:"
+#read dogname
+#./configure_hostname.sh $dogname
+./configure_hostname.sh skad-dog
+
+#echo "Name: $dogname"
 echo "##############################################################"
 
 echo "Now reboot this machine"
->>>>>>> test:scripts/configure_watch_dog.sh
+
