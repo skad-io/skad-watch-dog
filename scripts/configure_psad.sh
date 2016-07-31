@@ -1,5 +1,5 @@
 sudo apt-get update
-sudo apt-get install psad
+sudo apt-get -y install psad
 sudo iptables -A INPUT -i lo -j ACCEPT
 sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
