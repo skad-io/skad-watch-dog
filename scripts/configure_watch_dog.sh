@@ -11,38 +11,47 @@ sed -i "/success=1 default=ignore/c\auth\t[success=2 default=ignore]\tpam_unix.s
 line="00 00 * * * /home/pi/SKAD/scripts/remove_oldattemptsfromlog.sh"
 (crontab -u pi -l; echo "$line" ) | crontab -u pi -
 
-<<<<<<< HEAD:scripts/configure_skad_dog.sh
 ./create_dummyaccounts.sh
 
 # Add the DMZ check to run every minute
 `crontab -l | { cat; echo "* * * * * /home/pi/SKAD/scripts/check_DMZ_status.sh"; } | crontab -`
-=======
-# ./create_dummyaccounts.sh
 
-echo "Please enter the name of this new born Watch Dog:"
-read dogname
+# Check for updates on github every midnight
+`crontab -l | { cat; echo "00 00 * * * cd /home/pi/SKAD && git pull"; } | crontab -`
 
-./configure_hostname.sh $dogname
+#echo "Change password so it is no longer the default one:"
+#/usr/bin/passwd pi
 
-echo "Change password so it is no longer the default one:"
-/usr/bin/passwd pi
+# echo "paste public key to authorise for access"
+# read publickey
 
-echo "paste public key to authorise for access"
-read publickey
+# mkdir /home/pi/.ssh
+# chmod 700 /home/pi/.ssh
+# chown pi /home/pi/.ssh
+# touch /home/pi/.ssh/authorized_keys
+# chmod 600 /home/pi/.ssh/authorized_keys
+# chown pi /home/pi/.ssh/authorized_keys
+# echo $publickey >> /home/pi/.ssh/authorized_keys
 
-echo $publickey > /home/pi/.ssh/authorized_keys
-
+# For the beta we are just going with skad-dog which mirrors the name of the passwd -lwebsite
+#echo "Please enter the name of this new born Watch Dog:"
+#read dogname
+#./configure_hostname.sh $dogname
+./configure_hostname.sh skad-dog
 
 echo "##############################################################"
 echo "This dog's details are as follows:"
 
 ./generate_unique_key.sh
 
+read
+
+#echo "Name: $dogname"
+echo "##############################################################"
+
 echo "configuring port scan detection"
 ./configure_psad.sh
 
-echo "Name: $dogname"
-echo "##############################################################"
-
 echo "Now reboot this machine"
->>>>>>> test:scripts/configure_watch_dog.sh
+echo "Run this to disable password login:"
+echo "passwd -l"
