@@ -16,21 +16,24 @@ line="00 00 * * * /home/pi/SKAD/scripts/remove_oldattemptsfromlog.sh"
 # Add the DMZ check to run every minute
 `crontab -l | { cat; echo "* * * * * /home/pi/SKAD/scripts/check_DMZ_status.sh"; } | crontab -`
 
-echo "Change password so it is no longer the default one:"
-/usr/bin/passwd pi
+# Check for updates on github every midnight
+`crontab -l | { cat; echo "00 00 * * * cd /home/pi/SKAD && git pull"; } | crontab -`
 
-echo "paste public key to authorise for access"
-read publickey
+#echo "Change password so it is no longer the default one:"
+#/usr/bin/passwd pi
 
-mkdir /home/pi/.ssh
-chmod 700 /home/pi/.ssh
-chown pi /home/pi/.ssh
-touch /home/pi/.ssh/authorized_keys
-chmod 600 /home/pi/.ssh/authorized_keys
-chown pi /home/pi/.ssh/authorized_keys
-echo $publickey >> /home/pi/.ssh/authorized_keys
+# echo "paste public key to authorise for access"
+# read publickey
 
-# For the beta we are just going with skad-dog which mirrors the name of the website
+# mkdir /home/pi/.ssh
+# chmod 700 /home/pi/.ssh
+# chown pi /home/pi/.ssh
+# touch /home/pi/.ssh/authorized_keys
+# chmod 600 /home/pi/.ssh/authorized_keys
+# chown pi /home/pi/.ssh/authorized_keys
+# echo $publickey >> /home/pi/.ssh/authorized_keys
+
+# For the beta we are just going with skad-dog which mirrors the name of the passwd -lwebsite
 #echo "Please enter the name of this new born Watch Dog:"
 #read dogname
 #./configure_hostname.sh $dogname
@@ -50,4 +53,5 @@ echo "configuring port scan detection"
 ./configure_psad.sh
 
 echo "Now reboot this machine"
-
+echo "Run this to disable password login:"
+echo "passwd -l"
